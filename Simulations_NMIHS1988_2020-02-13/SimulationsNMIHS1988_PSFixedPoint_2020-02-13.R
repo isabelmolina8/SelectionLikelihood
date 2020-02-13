@@ -13,7 +13,6 @@ setwd("C:/Isa/TrabajoMalay/Simulations_NMIHS1988_2020-02-13")
 
 # Load required libraries
 
-#library(maxLik)
 source("lmInformative_FixedPoint_2020-02-13.R")
 
 # Read new data set without missing values
@@ -151,7 +150,6 @@ source("lmInformative_FixedPoint_2020-02-13.R")
 
 # Set the seed for random number generation
 
-#set.seed(3234)
 set.seed(1234)
 
 ### Simulations start
@@ -231,9 +229,6 @@ reg.ols[sim]<-mean(Xpop%*%beta0)
 
 # We set the value of sigmae for P-S method to the true value
 
-#sigmae2<-sum(((bwg.s-fitted(fit.s))^2)/(n.s[sim]-p))
-#sigmae<-sqrt(sigmae2)
-
 sigmae<-sqrt(sigmae2.t)
 sigmae2<-sigmae2.t
 
@@ -263,9 +258,7 @@ reg.ps[sim]<-mean(Xpop%*%beta.ps[sim,])
 
 # M-G method
 
-#theta<-(-0.2)
 theta<-(-1)
-#theta<-0.8
 
 opt.mg<-logLikFunMG_FP(beta.start=beta.in,theta,y,Xs,sigmae,Yvec,cvec)
 beta.mg[sim,]<-opt.mg[,1]
